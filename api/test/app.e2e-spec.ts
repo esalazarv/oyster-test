@@ -4,8 +4,10 @@ import { ConfigService } from '@nestjs/config';
 import * as request from 'supertest';
 
 import { AppModule } from '../src/app.module';
+import { Connection } from 'typeorm';
 
 describe('AppController (e2e)', () => {
+  let connection: Connection;
   let app: INestApplication;
   const mockedConfigService = {
     get(key: string) {
@@ -30,7 +32,13 @@ describe('AppController (e2e)', () => {
     }).compile();
 
     app = moduleFixture.createNestApplication();
+    connection = moduleFixture.get<Connection>(Connection);
     await app.init();
+    await connection.synchronize(true);
+  });
+
+  afterEach(async () => {
+    await connection.close();
   });
 
   it('/ (GET)', () => {
