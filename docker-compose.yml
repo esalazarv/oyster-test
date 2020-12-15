@@ -1,0 +1,18 @@
+version: "3.7"
+networks:
+  internal:
+    driver: "bridge"
+
+services:
+  api:
+    build:
+      context: api
+      target: development
+    volumes:
+      - ./api:/var/www/html
+      - /var/www/html/node_modules
+    networks:
+      - internal
+    ports:
+      - "${DOCKER_API_PORT:-3000}:3000"
+    restart: always
