@@ -5,7 +5,9 @@ export const Connections = () => ({
   sqlite: {
     name: 'default',
     type: 'sqlite',
-    database: process.env.DB_DATABASE ? process.env.DB_DATABASE + `.sqlite` : 'oyster.sqlite',
+    database: process.env.DB_DATABASE
+      ? process.env.DB_DATABASE + `.sqlite`
+      : 'oyster.sqlite',
     entities: [__dirname + '/../**/*.entity{.ts,.js}'],
     synchronize: false,
     migrationsRun: false,
@@ -22,9 +24,9 @@ export const Connections = () => ({
     type: 'sqlite',
     database: ':memory:',
     entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-    synchronize: true,
-    migrationsRun: true,
-    logging: true,
+    synchronize: false,
+    migrationsRun: false,
+    logging: false,
     migrations: [__dirname + '/../migrations/**/*{.ts,.js}'],
     cli: {
       migrationsDir: 'src/migrations',
