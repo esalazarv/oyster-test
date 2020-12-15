@@ -6,11 +6,9 @@ COPY . .
 FROM node:lts-alpine as development
 WORKDIR /var/www/html
 COPY --from=base /var/www/html /var/www/html/
-RUN npm i -g @nestjs/cli
-#&& npm install
+RUN npm i -g @nestjs/cli && npm install
 EXPOSE 3000
-ENTRYPOINT ["tail", "-f", "/dev/null"]
-#ENTRYPOINT ["npm", "run", "start:dev"]
+ENTRYPOINT ["npm", "run", "start:dev"]
 
 # For production stage
 # TODO: implement astage for build a production distribution
