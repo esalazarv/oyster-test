@@ -4,7 +4,7 @@ import { UsersService } from './users.service';
 import { User } from './entities/user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import {UserRepository} from "./repositories/user.repository";
+import { UserRepository } from './repositories/user.repository';
 
 describe('UsersService', () => {
   let service: UsersService;
@@ -12,10 +12,7 @@ describe('UsersService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [
-        UsersService,
-        UserRepository,
-      ],
+      providers: [UsersService, UserRepository],
     }).compile();
 
     service = module.get<UsersService>(UsersService);
@@ -97,12 +94,12 @@ describe('UsersService', () => {
     user.email = 'eduardo@test.com';
     user.name = 'Eduardo';
     jest
-        .spyOn(userRepository, 'findByUsername')
-        .mockImplementation(async () => user);
+      .spyOn(userRepository, 'findByUsername')
+      .mockImplementation(async () => user);
     const result = await service.findByUsername('eduardo@test.com');
     expect(result).toBe(user);
     expect(userRepository.findByUsername).toHaveBeenCalledWith(
-        'eduardo@test.com',
+      'eduardo@test.com',
     );
   });
 });

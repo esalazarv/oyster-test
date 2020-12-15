@@ -5,7 +5,7 @@ import { UsersService } from './users.service';
 import { User } from './entities/user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import {UserRepository} from "./repositories/user.repository";
+import { UserRepository } from './repositories/user.repository';
 
 describe('UsersController', () => {
   let controller: UsersController;
@@ -14,10 +14,7 @@ describe('UsersController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [UsersController],
-      providers: [
-        UsersService,
-        UserRepository,
-      ],
+      providers: [UsersService, UserRepository],
     }).compile();
 
     controller = module.get<UsersController>(UsersController);

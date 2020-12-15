@@ -4,7 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AppConfig } from './app.config';
 import { DatabaseConfig, ResolveConnectionConfig } from './database.config';
-import { JwtConfig } from "./jwt.config";
+import { JwtConfig } from './jwt.config';
 
 @Module({
   imports: [
