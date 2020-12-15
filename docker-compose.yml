@@ -14,5 +14,6 @@ services:
     networks:
       - internal
     ports:
-      - "${DOCKER_API_PORT:-3000}:3000"
+      # This map host port to container port 80
+      - "${DOCKER_API_PORT:-3000}:80"
     restart: always
