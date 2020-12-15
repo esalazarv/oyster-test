@@ -5,7 +5,7 @@ export const Connections = () => ({
   sqlite: {
     name: 'default',
     type: 'sqlite',
-    database: process.env.DB_DATABASE || 'oyster',
+    database: process.env.DB_DATABASE ? process.env.DB_DATABASE + `.sqlite` : 'oyster.sqlite',
     entities: [__dirname + '/../**/*.entity{.ts,.js}'],
     synchronize: false,
     migrationsRun: false,
