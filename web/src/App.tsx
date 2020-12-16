@@ -16,7 +16,7 @@ function App() {
         <Router history={history}>
             <Switch>
                 <AppRoute path='/login' layout={GuestLayout} component={Dashboard} />
-                <AppRoute path='/' layout={MainLayout} restricted={true} component={Dashboard} fallback={null}/>
+                <AppRoute path='/' layout={MainLayout} restricted={true} component={Dashboard}/>
             </Switch>
         </Router>
     </div>
