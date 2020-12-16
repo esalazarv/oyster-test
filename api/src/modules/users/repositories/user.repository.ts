@@ -5,7 +5,7 @@ import { User } from '../entities/user.entity';
 export class UserRepository extends Repository<User> {
   async findByUsername(username: string): Promise<User> {
     return await this.findOne({
-      where: { username },
+      where: { email: username },
     });
   }
 }

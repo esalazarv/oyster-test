@@ -41,7 +41,7 @@ describe('AppController (e2e)', () => {
     await connection.close();
   });
 
-  it('/ (GET)', () => {
+  it('/ (GET)', async () => {
     const response = {
       name: 'Oyster',
       version: '1.0.0',
