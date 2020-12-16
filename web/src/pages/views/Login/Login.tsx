@@ -36,12 +36,15 @@ function Login(props: any) {
             <div className="oyster-login-logo-wrapper">
                 <img src="logo-white.svg" alt="oyster"/>
             </div>
-            <Form>
-                <Card title="Inicio de sesión" className="oyster-login-card">
+            <Card title="Inicio de sesión" className="oyster-login-card">
+                <Form onFinish={submit} initialValues={{username, password}}>
                     <div className="oyster-login-form-message">
                         { !!error ? <small className="oyster-error-message">{error}</small> : null}
                     </div>
-                    <Form.Item rules={[{ required: true, message: 'Please input your username!' }]}>
+                    <Form.Item name="username" rules={[
+                        { required: true, message: 'Please input your username!' },
+                        { type: 'email', message: 'Username! must be a valid email' }
+                        ]}>
                         <Input size="large"
                                prefix={<UserOutlined/>}
                                value={username}
@@ -49,7 +52,7 @@ function Login(props: any) {
                                placeholder="Username"
                         />
                     </Form.Item>
-                    <Form.Item rules={[{ required: true, message: 'Please input your username!' }]}>
+                    <Form.Item name="password" rules={[{ required: true, message: 'Please input your username!' }]}>
                         <Input size="large"
                                type="password"
                                value={password}
@@ -67,13 +70,12 @@ function Login(props: any) {
                             htmlType="submit"
                             loading={props.auth.requesting}
                             disabled={props.auth.requesting}
-                            onClick={submit}
                         >
                             Continuar
                         </Button>
                     </Form.Item>
-                </Card>
-            </Form>
+                </Form>
+            </Card>
         </div>
     );
 }
