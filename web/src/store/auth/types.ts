@@ -1,6 +1,7 @@
 export interface Token {
     access_token: string;
     access_type: string;
+    expires: number;
 }
 
 export interface AuthState {

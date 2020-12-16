@@ -28,7 +28,7 @@ describe('AuthController', () => {
         }),
       ],
       controllers: [AuthController],
-      providers: [AuthService, UsersService, UserRepository],
+      providers: [AuthService, UsersService, UserRepository, ConfigService],
     }).compile();
 
     controller = module.get<AuthController>(AuthController);
@@ -60,6 +60,7 @@ describe('AuthController', () => {
     expect(accessToken).toEqual({
       access_token: 'generated_access_token',
       access_type: 'Bearer',
+      expires: 3600,
     });
   });
 

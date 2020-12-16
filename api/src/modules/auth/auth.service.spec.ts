@@ -24,7 +24,7 @@ describe('AuthService', () => {
           inject: [ConfigService],
         }),
       ],
-      providers: [AuthService, UsersService, UserRepository],
+      providers: [AuthService, UsersService, UserRepository, ConfigService],
     }).compile();
 
     service = module.get<AuthService>(AuthService);

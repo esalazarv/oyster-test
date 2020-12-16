@@ -23,7 +23,7 @@ function Login(props: any) {
         authService.authenticate({ username, password })
             .then((response) => console.log(response))
             .catch((error) => {
-                setError(error.statusText);
+                setError(error.data?.error ?? error.statusText ?? 'Error');
                 props.requestFail();
             })
             .finally(() => props.requestDone());
