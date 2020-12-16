@@ -6,7 +6,7 @@ const { Header, Content, Footer } = Layout;
 export default function MainLayout(props: LayoutProps) {
     return (
         <Layout className="site-layout-content">
-            <Header>
+            <Header className="oyster-primary-bg">
                 <div className="logo" />
                 <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
                     <Menu.Item key="1">nav 1</Menu.Item>
