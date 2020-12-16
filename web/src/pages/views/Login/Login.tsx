@@ -48,14 +48,16 @@ function Login(props: any) {
                         <Input size="large"
                                prefix={<UserOutlined/>}
                                value={username}
+                               autoComplete="off"
                                onChange={(event: ChangeEvent<HTMLInputElement>) => setUsername(event.target.value)}
                                placeholder="Username"
                         />
                     </Form.Item>
-                    <Form.Item name="password" rules={[{ required: true, message: 'Please input your username!' }]}>
+                    <Form.Item name="password" rules={[{ required: true, message: 'Please input your password!' }]}>
                         <Input size="large"
                                type="password"
                                value={password}
+                               autoComplete="off"
                                onChange={(event: ChangeEvent<HTMLInputElement>) => setPassword(event.target.value)}
                                prefix={<LockOutlined/>}
                                placeholder="Password"
