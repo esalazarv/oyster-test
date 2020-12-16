@@ -4,8 +4,8 @@ import {StoreAction} from "../types";
 import {AuthState, Token} from "./types";
 
 const initialState: AuthState = {
-  requesting: true,
-  access_token: "null",
+  requesting: false,
+  access_token: null,
   access_type: null,
   issued_at: 0,
   expires: 0,

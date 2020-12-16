@@ -3,6 +3,8 @@ import { Router, Switch } from 'react-router-dom';
 import { createBrowserHistory } from "history";
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
+// @ts-ignore
+import ReactBreakpoints from 'react-breakpoints';
 
 import './App.less';
 import {AppStore, Persistor} from './store/store';

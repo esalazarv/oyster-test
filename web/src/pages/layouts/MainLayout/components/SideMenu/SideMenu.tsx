@@ -3,10 +3,11 @@ import SubMenu from "antd/es/menu/SubMenu";
 import {LaptopOutlined, NotificationOutlined, UserOutlined} from "@ant-design/icons";
 import Sider from "antd/es/layout/Sider";
 import React from "react";
+import './SideMenu.less'
 
 export function SideMenu() {
     return (
-        <Sider width={200} className="site-layout-background">
+        <Sider className="site-layout-background oyster-side-menu">
             <Menu
                 mode="inline"
                 defaultSelectedKeys={['1']}

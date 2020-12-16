@@ -29,9 +29,9 @@ export function requestDone(): StoreAction {
   return {type: AUTH_ACTION_TYPES.REQUEST_DONE};
 }
 
-export function requestFail(payload: Token): StoreAction<Token> {
+export function requestFail(): StoreAction<Token> {
   console.log(AUTH_ACTION_TYPES.REQUEST_FAIL);
-  return {type: AUTH_ACTION_TYPES.REQUEST_FAIL, payload};
+  return {type: AUTH_ACTION_TYPES.REQUEST_FAIL};
 }
 
 export function incrementTryCounter() {
