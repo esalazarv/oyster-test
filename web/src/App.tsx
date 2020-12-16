@@ -1,24 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.less';
+import MainLayout from "./pages/layouts/MainLayout/MainLayout";
 
+import { Router, Switch } from 'react-router-dom';
+import { createBrowserHistory } from "history";
+import Dashboard from "./pages/views/Dashboard/Dashboard";
+import GuestLayout from "./pages/layouts/GuestLayout/GuestLayout";
+import AppRoute from "./pages/components/AppRoute/AppRoute";
+import Login from "./pages/views/Login/Login";
+
+const history = createBrowserHistory();
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Router history={history}>
+            <Switch>
+                <AppRoute path='/login' layout={GuestLayout} component={Login} />
+                <AppRoute path='/' layout={MainLayout} restricted={true} component={Dashboard}/>
+            </Switch>
+        </Router>
     </div>
   );
 }
