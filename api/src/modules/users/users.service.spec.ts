@@ -1,29 +1,22 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { getRepositoryToken } from '@nestjs/typeorm';
 
 import { UsersService } from './users.service';
 import { User } from './entities/user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
-import { Repository } from 'typeorm';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { UserRepository } from './repositories/user.repository';
 
 describe('UsersService', () => {
   let service: UsersService;
-  let userRepository: Repository<User>;
+  let userRepository: UserRepository;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [
-        UsersService,
-        {
-          provide: getRepositoryToken(User),
-          useClass: Repository,
-        },
-      ],
+      providers: [UsersService, UserRepository],
     }).compile();
 
     service = module.get<UsersService>(UsersService);
-    userRepository = module.get<Repository<User>>(getRepositoryToken(User));
+    userRepository = module.get<UserRepository>(UserRepository);
   });
 
   it('should be defined', () => {
@@ -93,5 +86,20 @@ describe('UsersService', () => {
     const result = await service.remove(1);
     expect(result).toBe(null);
     expect(userRepository.delete).toHaveBeenCalledWith(1);
+  });
+
+  it('should find user by username', async () => {
+    const user: User = new User();
+    user.id = 1;
+    user.email = 'eduardo@test.com';
+    user.name = 'Eduardo';
+    jest
+      .spyOn(userRepository, 'findByUsername')
+      .mockImplementation(async () => user);
+    const result = await service.findByUsername('eduardo@test.com');
+    expect(result).toBe(user);
+    expect(userRepository.findByUsername).toHaveBeenCalledWith(
+      'eduardo@test.com',
+    );
   });
 });

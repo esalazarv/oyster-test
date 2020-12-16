@@ -24,8 +24,9 @@ export const Connections = () => ({
     type: 'sqlite',
     database: ':memory:',
     entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+    dropSchema: true,
     synchronize: false,
-    migrationsRun: false,
+    migrationsRun: true,
     logging: false,
     migrations: [__dirname + '/../migrations/**/*{.ts,.js}'],
     cli: {
