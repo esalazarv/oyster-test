@@ -3,7 +3,7 @@ import { Layout, Menu, Breadcrumb } from 'antd';
 import {LayoutProps} from "../../../types/LayoutProps";
 import './MainLayout.less';
 import {SideMenu} from "./components/SideMenu/SideMenu";
-import {Navbar} from "./components/NavBar/Navbar";
+import Navbar from "./components/NavBar/Navbar";
 
 const { Content, Footer } = Layout;
 export default function MainLayout(props: LayoutProps) {

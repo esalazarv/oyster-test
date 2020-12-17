@@ -21,7 +21,10 @@ function Login(props: any) {
         setError('');
         props.authenticate();
         authService.authenticate({ username, password })
-            .then((response) => console.log(response))
+            .then(async (response) => {
+                await props.setAccessToken(response);
+                props.history.push('/');
+            })
             .catch((error) => {
                 setError(error.data?.error ?? error.statusText ?? 'Error');
                 props.requestFail();

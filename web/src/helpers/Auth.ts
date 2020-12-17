@@ -5,7 +5,7 @@ import {logout} from '../store/auth/actions';
 export default class Auth {
     static hasToken() {
         const {auth} = AppStore.getState();
-        return !!auth.token;
+        return !!auth.access_token;
     }
 
     static check() {
