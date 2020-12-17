@@ -1,0 +1,18 @@
+version: "3.7"
+networks:
+  internal:
+    driver: "bridge"
+
+services:
+  api:
+    build:
+      context: api
+      target: production
+    volumes:
+      - ./api:/var/www/html
+      - /var/www/html/node_modules
+    networks:
+      - internal
+    restart: always
+
+
