@@ -6,7 +6,7 @@ import './GuestLayout.less';
 const { Header, Content, Footer } = Layout;
 function GuestLayout(props: LayoutProps) {
     return (
-        <Layout className="oyster-layout oyster-primary-bg">
+        <Layout className="oyster-guest-layout oyster-primary-bg">
             <Header className="oyster-primary-bg">
                 <div className="logo" />
             </Header>
@@ -17,7 +17,5 @@ function GuestLayout(props: LayoutProps) {
         </Layout>
     );
 }
-
-
 
 export default GuestLayout;
