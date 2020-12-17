@@ -28,7 +28,7 @@ This project keeps the frontend and backend in different directories:
 - `web` directory for a React Js project  
 - `nginx` directory for reverse proxy config templates **(Production only)**
 
-#####¿Why reverse proxy?
+##### ¿Why reverse proxy?
 The main reason is for put all services together listen for the same IP or domain in a server.
 
 ### Requirements
