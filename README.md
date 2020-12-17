@@ -87,7 +87,7 @@ For development environment this value value is ok
 ````dotenv
 REACT_APP_API_HOST=http://localhost:3000
 ````
-_Note: Change this value if you had configured another port for the API in you docker-compose.yml. 
+_Note: Change this value if you have configured another port for the API in you docker-compose.yml. 
 If you are in production the api host must ends with the path `/api` 
 because the reverse proxy handles those requests with this rule. Example: `http://my-domain.com/api`_ 
 
