@@ -11,4 +11,16 @@ EXPOSE 3000
 ENTRYPOINT ["npm", "run", "start"]
 
 # For production stage
-# TODO: implement astage for build a production distribution
+FROM base as build
+RUN npm install
+RUN npm run build
+ENTRYPOINT ["tail", "-f", "/dev/null"]
+
+
+# For production stage
+FROM nginx:alpine as production
+ENV APP_PORT=80
+WORKDIR /usr/share/nginx/html
+COPY --from=build /var/www/html/build /usr/share/nginx/html
+EXPOSE $APP_PORT
+CMD ["nginx", "-g", "daemon off;"]

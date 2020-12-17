@@ -3,7 +3,7 @@ const config = {
         name: 'Oyster',
     },
     api: {
-        host: 'http://localhost:3000',
+        host: process.env.REACT_APP_API_HOST || 'http://localhost:3000',
         timeout: 5000,
     },
     auth: {

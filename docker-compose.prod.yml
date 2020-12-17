@@ -8,11 +8,43 @@ services:
     build:
       context: api
       target: production
-    volumes:
-      - ./api:/var/www/html
-      - /var/www/html/node_modules
     networks:
       - internal
     restart: always
 
+  web:
+    build:
+      context: web
+      target: production
+    networks:
+      - internal
+    volumes:
+      - ./nginx/templates/web.conf.template:/etc/nginx/conf.d/default.conf
+    restart: always
+    environment:
+      REACT_APP_API_HOST: http://localhost:3000/api
 
+  proxy:
+    image: nginx:alpine
+    networks:
+      - internal
+    ports:
+      - "${DOCKER_APP_PORT:-3000}:${DOCKER_APP_PORT:-3000}"
+    volumes:
+      - ./nginx/templates/proxy.conf.template:/etc/nginx/templates/default.conf.template
+      - ./api:/var/www/html
+    environment:
+      # The main port
+      NGINX_PROXY_PORT: ${DOCKER_APP_PORT:-3000}
+
+      # The API hostname must be the same as the service name for the api container in this config file
+      # else reverse proxy will fail
+      NGINX_API_HOST: http://api
+
+      # The APP hostname must be the same as the service name for the web container in this config file
+      # else reverse proxy will fail
+      NGINX_APP_HOST: http://web
+    depends_on:
+      - web
+      - api
+    restart: always
