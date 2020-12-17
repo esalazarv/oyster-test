@@ -29,7 +29,7 @@ This project keeps the frontend and backend in different directories:
 - `nginx` directory for reverse proxy config templates **(Production only)**
 
 ##### ¿Why reverse proxy?
-The main reason is for put all services together and listen for the same IP or domain in a server.
+The main reason is for put all services together in to a server and listen for the same IP or domain.
 
 ### Requirements
 
@@ -83,7 +83,7 @@ cd api
 cp .env.example .env
 ````
 
-For development environment this value else this value is ok
+For development environment this value value is ok
 ````dotenv
 REACT_APP_API_HOST=http://localhost:3000
 ````
