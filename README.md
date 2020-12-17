@@ -29,7 +29,7 @@ This project keeps the frontend and backend in different directories:
 - `nginx` directory for reverse proxy config templates **(Production only)**
 
 ##### ¿Why reverse proxy?
-The main reason is for put all services together listen for the same IP or domain in a server.
+The main reason is for put all services together and listen for the same IP or domain in a server.
 
 ### Requirements
 
